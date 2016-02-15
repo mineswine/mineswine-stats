@@ -17,6 +17,8 @@ app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'src/client/')));
 app.use(express.static(path.join(__dirname, 'dist')));
 
+db.getMatches((data) => console.log(data));
+var server;
 
 var db = new DB({
   host: process.env.mineswineDBHost,
@@ -24,10 +26,6 @@ var db = new DB({
   password: process.env.mineswineDBPass,
   database: process.env.mineswineDBName
 });
-
-db.getMatches((data) => console.log(data));
-
-var server;
 
 app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/index.html'));
