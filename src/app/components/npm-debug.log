@@ -1,0 +1,292 @@
+0 info it worked if it ends with ok
+1 verbose cli [ '/home/ubuntu/.nvm/versions/node/v4.1.1/bin/node',
+1 verbose cli   '/home/ubuntu/.nvm/versions/node/v4.1.1/bin/npm',
+1 verbose cli   'install' ]
+2 info using npm@2.14.4
+3 info using node@v4.1.1
+4 verbose readDependencies loading dependencies from /home/ubuntu/workspace/package.json
+5 verbose install where, deps [ '/home/ubuntu/workspace',
+5 verbose install   [ 'debug',
+5 verbose install     'express',
+5 verbose install     'react',
+5 verbose install     'babel',
+5 verbose install     'babel-core',
+5 verbose install     'babel-loader',
+5 verbose install     'jest-cli',
+5 verbose install     'webpack' ] ]
+6 verbose install where, peers [ '/home/ubuntu/workspace', [] ]
+7 verbose installManyTop reading for lifecycle /home/ubuntu/workspace/package.json
+8 info preinstall react-way-getting-started@1.0.0
+9 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/async/package.json
+10 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/babel/package.json
+11 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/babel-core/package.json
+12 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/babel-loader/package.json
+13 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/babel-preset-es2015/package.json
+14 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/babel-preset-react/package.json
+15 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/babel-register/package.json
+16 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/debug/package.json
+17 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/express/package.json
+18 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/jest/package.json
+19 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/jest-cli/package.json
+20 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/js/package.json
+21 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/jsx/package.json
+22 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/react/package.json
+23 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/react-dom/package.json
+24 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/socket.io/package.json
+25 verbose installManyTop reading scoped package data from /home/ubuntu/workspace/node_modules/webpack/package.json
+26 info package.json async@0.2.10 No license field.
+27 info package.json babel-core@5.8.35 No README data
+28 info package.json js@0.1.0 No repository field.
+29 info package.json js@0.1.0 No license field.
+30 info package.json jest@0.1.40 No license field.
+31 info package.json socket.io@0.9.17 No license field.
+32 verbose readDependencies loading dependencies from /home/ubuntu/workspace/package.json
+33 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/async/package.json
+34 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/babel/package.json
+35 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/babel-core/package.json
+36 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/babel-loader/package.json
+37 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/babel-preset-es2015/package.json
+38 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/babel-preset-react/package.json
+39 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/babel-register/package.json
+40 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/debug/package.json
+41 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/express/package.json
+42 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/jest/package.json
+43 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/jest-cli/package.json
+44 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/js/package.json
+45 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/jsx/package.json
+46 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/react/package.json
+47 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/react-dom/package.json
+48 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/socket.io/package.json
+49 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/webpack/package.json
+50 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/.bin/babel/package.json
+51 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/.bin/babel-external-helpers/package.json
+52 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/.bin/babel-node/package.json
+53 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/.bin/babel-plugin/package.json
+54 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/.bin/jest/package.json
+55 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/.bin/js/package.json
+56 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/.bin/jsx/package.json
+57 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/.bin/jsx-profile-server/package.json
+58 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/.bin/jsx-with-server/package.json
+59 verbose targetResolver reading package data from /home/ubuntu/workspace/node_modules/.bin/webpack/package.json
+60 verbose already installed skipping jest-cli@^0.4.0 /home/ubuntu/workspace
+61 verbose already installed skipping webpack@^1.8.4 /home/ubuntu/workspace
+62 verbose already installed skipping debug@^2.1.3 /home/ubuntu/workspace
+63 verbose already installed skipping express@^4.12.3 /home/ubuntu/workspace
+64 verbose already installed skipping react@^0.13.1 /home/ubuntu/workspace
+65 verbose already installed skipping babel@^5.0.12 /home/ubuntu/workspace
+66 verbose already installed skipping babel-core@^5.0.12 /home/ubuntu/workspace
+67 verbose already installed skipping babel-loader@^5.0.0 /home/ubuntu/workspace
+68 silly install resolved []
+69 info build /home/ubuntu/workspace
+70 info linkStuff react-way-getting-started@1.0.0
+71 silly linkStuff react-way-getting-started@1.0.0 has /home/ubuntu as its parent node_modules
+72 verbose linkBins react-way-getting-started@1.0.0
+73 verbose linkMans react-way-getting-started@1.0.0
+74 verbose rebuildBundles react-way-getting-started@1.0.0
+75 verbose rebuildBundles [ '.bin',
+75 verbose rebuildBundles   'async',
+75 verbose rebuildBundles   'babel',
+75 verbose rebuildBundles   'babel-core',
+75 verbose rebuildBundles   'babel-loader',
+75 verbose rebuildBundles   'babel-preset-es2015',
+75 verbose rebuildBundles   'babel-preset-react',
+75 verbose rebuildBundles   'babel-register',
+75 verbose rebuildBundles   'debug',
+75 verbose rebuildBundles   'express',
+75 verbose rebuildBundles   'jest',
+75 verbose rebuildBundles   'jest-cli',
+75 verbose rebuildBundles   'js',
+75 verbose rebuildBundles   'jsx',
+75 verbose rebuildBundles   'react',
+75 verbose rebuildBundles   'react-dom',
+75 verbose rebuildBundles   'socket.io',
+75 verbose rebuildBundles   'webpack' ]
+76 verbose rebuild bundle /home/ubuntu/workspace/node_modules/async
+77 info build /home/ubuntu/workspace/node_modules/async
+78 info preinstall async@0.2.10
+79 info linkStuff async@0.2.10
+80 silly linkStuff async@0.2.10 has /home/ubuntu/workspace/node_modules as its parent node_modules
+81 verbose linkBins async@0.2.10
+82 verbose linkMans async@0.2.10
+83 verbose rebuildBundles async@0.2.10
+84 info install async@0.2.10
+85 info postinstall async@0.2.10
+86 verbose rebuild bundle /home/ubuntu/workspace/node_modules/babel-preset-es2015
+87 info build /home/ubuntu/workspace/node_modules/babel-preset-es2015
+88 info preinstall babel-preset-es2015@6.5.0
+89 info linkStuff babel-preset-es2015@6.5.0
+90 silly linkStuff babel-preset-es2015@6.5.0 has /home/ubuntu/workspace/node_modules as its parent node_modules
+91 verbose linkBins babel-preset-es2015@6.5.0
+92 verbose linkMans babel-preset-es2015@6.5.0
+93 verbose rebuildBundles babel-preset-es2015@6.5.0
+94 verbose rebuildBundles [ 'babel-plugin-check-es2015-constants',
+94 verbose rebuildBundles   'babel-plugin-transform-es2015-arrow-functions',
+94 verbose rebuildBundles   'babel-plugin-transform-es2015-block-scoped-functions',
+94 verbose rebuildBundles   'babel-plugin-transform-es2015-block-scoping',
+94 verbose rebuildBundles   'babel-plugin-transform-es2015-classes',
+94 verbose rebuildBundles   'babel-plugin-transform-es2015-computed-properties',
+94 verbose rebuildBundles   'babel-plugin-transform-es2015-destructuring',
+94 verbose rebuildBundles   'babel-plugin-transform-es2015-for-of',
+94 verbose rebuildBundles   'babel-plugin-transform-es2015-function-name',
+94 verbose rebuildBundles   'babel-plugin-transform-es2015-literals',
+94 verbose rebuildBundles   'babel-plugin-transform-es2015-modules-commonjs',
+94 verbose rebuildBundles   'babel-plugin-transform-es2015-object-super',
+94 verbose rebuildBundles   'babel-plugin-transform-es2015-parameters',
+94 verbose rebuildBundles   'babel-plugin-transform-es2015-shorthand-properties',
+94 verbose rebuildBundles   'babel-plugin-transform-es2015-spread',
+94 verbose rebuildBundles   'babel-plugin-transform-es2015-sticky-regex',
+94 verbose rebuildBundles   'babel-plugin-transform-es2015-template-literals',
+94 verbose rebuildBundles   'babel-plugin-transform-es2015-typeof-symbol',
+94 verbose rebuildBundles   'babel-plugin-transform-es2015-unicode-regex',
+94 verbose rebuildBundles   'babel-plugin-transform-regenerator' ]
+95 info install babel-preset-es2015@6.5.0
+96 info postinstall babel-preset-es2015@6.5.0
+97 verbose rebuild bundle /home/ubuntu/workspace/node_modules/babel-preset-react
+98 info build /home/ubuntu/workspace/node_modules/babel-preset-react
+99 info preinstall babel-preset-react@6.5.0
+100 info linkStuff babel-preset-react@6.5.0
+101 silly linkStuff babel-preset-react@6.5.0 has /home/ubuntu/workspace/node_modules as its parent node_modules
+102 verbose linkBins babel-preset-react@6.5.0
+103 verbose linkMans babel-preset-react@6.5.0
+104 verbose rebuildBundles babel-preset-react@6.5.0
+105 verbose rebuildBundles [ 'babel-plugin-syntax-flow',
+105 verbose rebuildBundles   'babel-plugin-syntax-jsx',
+105 verbose rebuildBundles   'babel-plugin-transform-flow-strip-types',
+105 verbose rebuildBundles   'babel-plugin-transform-react-display-name',
+105 verbose rebuildBundles   'babel-plugin-transform-react-jsx',
+105 verbose rebuildBundles   'babel-plugin-transform-react-jsx-source' ]
+106 info install babel-preset-react@6.5.0
+107 info postinstall babel-preset-react@6.5.0
+108 verbose rebuild bundle /home/ubuntu/workspace/node_modules/babel-register
+109 info build /home/ubuntu/workspace/node_modules/babel-register
+110 info preinstall babel-register@6.5.1
+111 info linkStuff babel-register@6.5.1
+112 silly linkStuff babel-register@6.5.1 has /home/ubuntu/workspace/node_modules as its parent node_modules
+113 verbose linkBins babel-register@6.5.1
+114 verbose linkMans babel-register@6.5.1
+115 verbose rebuildBundles babel-register@6.5.1
+116 verbose rebuildBundles [ '.bin',
+116 verbose rebuildBundles   'babel-runtime',
+116 verbose rebuildBundles   'core-js',
+116 verbose rebuildBundles   'home-or-tmp',
+116 verbose rebuildBundles   'lodash',
+116 verbose rebuildBundles   'mkdirp',
+116 verbose rebuildBundles   'path-exists',
+116 verbose rebuildBundles   'source-map-support' ]
+117 info install babel-register@6.5.1
+118 info postinstall babel-register@6.5.1
+119 verbose rebuild bundle /home/ubuntu/workspace/node_modules/jest
+120 info build /home/ubuntu/workspace/node_modules/jest
+121 info preinstall jest@0.1.40
+122 info linkStuff jest@0.1.40
+123 silly linkStuff jest@0.1.40 has /home/ubuntu/workspace/node_modules as its parent node_modules
+124 verbose linkBins jest@0.1.40
+125 verbose linkMans jest@0.1.40
+126 verbose rebuildBundles jest@0.1.40
+127 verbose rebuildBundles [ 'sji', 'underscore' ]
+128 info install jest@0.1.40
+129 info postinstall jest@0.1.40
+130 verbose rebuild bundle /home/ubuntu/workspace/node_modules/js
+131 info build /home/ubuntu/workspace/node_modules/js
+132 info preinstall js@0.1.0
+133 info linkStuff js@0.1.0
+134 silly linkStuff js@0.1.0 has /home/ubuntu/workspace/node_modules as its parent node_modules
+135 verbose linkBins js@0.1.0
+136 verbose link bins [ { js: './bin/js' },
+136 verbose link bins   '/home/ubuntu/workspace/node_modules/.bin',
+136 verbose link bins   false ]
+137 verbose linkMans js@0.1.0
+138 verbose rebuildBundles js@0.1.0
+139 verbose rebuildBundles [ 'commander' ]
+140 silly gentlyRm /home/ubuntu/workspace/node_modules/.bin/js is being purged
+141 verbose gentlyRm don't care about contents; nuking /home/ubuntu/workspace/node_modules/.bin/js
+142 silly vacuum-fs purging /home/ubuntu/workspace/node_modules/.bin/js
+143 silly vacuum-fs quitting because other entries in /home/ubuntu/workspace/node_modules/.bin
+144 info install js@0.1.0
+145 info postinstall js@0.1.0
+146 verbose rebuild bundle /home/ubuntu/workspace/node_modules/jsx
+147 info build /home/ubuntu/workspace/node_modules/jsx
+148 info preinstall jsx@0.9.89
+149 info linkStuff jsx@0.9.89
+150 silly linkStuff jsx@0.9.89 has /home/ubuntu/workspace/node_modules as its parent node_modules
+151 warn prefer global jsx@0.9.89 should be installed with -g
+152 verbose linkBins jsx@0.9.89
+153 verbose link bins [ { jsx: './bin/jsx',
+153 verbose link bins     'jsx-with-server': './bin/jsx-with-server',
+153 verbose link bins     'jsx-profile-server': './bin/jsx-profile-server' },
+153 verbose link bins   '/home/ubuntu/workspace/node_modules/.bin',
+153 verbose link bins   false ]
+154 verbose linkMans jsx@0.9.89
+155 verbose rebuildBundles jsx@0.9.89
+156 verbose rebuildBundles [ '.bin',
+156 verbose rebuildBundles   'escodegen',
+156 verbose rebuildBundles   'esmangle',
+156 verbose rebuildBundles   'esprima',
+156 verbose rebuildBundles   'source-map',
+156 verbose rebuildBundles   'source-map-support' ]
+157 silly gentlyRm /home/ubuntu/workspace/node_modules/.bin/jsx is being purged
+158 verbose gentlyRm don't care about contents; nuking /home/ubuntu/workspace/node_modules/.bin/jsx
+159 silly gentlyRm /home/ubuntu/workspace/node_modules/.bin/jsx-with-server is being purged
+160 verbose gentlyRm don't care about contents; nuking /home/ubuntu/workspace/node_modules/.bin/jsx-with-server
+161 silly gentlyRm /home/ubuntu/workspace/node_modules/.bin/jsx-profile-server is being purged
+162 verbose gentlyRm don't care about contents; nuking /home/ubuntu/workspace/node_modules/.bin/jsx-profile-server
+163 silly vacuum-fs purging /home/ubuntu/workspace/node_modules/.bin/jsx
+164 silly vacuum-fs purging /home/ubuntu/workspace/node_modules/.bin/jsx-with-server
+165 silly vacuum-fs purging /home/ubuntu/workspace/node_modules/.bin/jsx-profile-server
+166 silly vacuum-fs quitting because other entries in /home/ubuntu/workspace/node_modules/.bin
+167 silly vacuum-fs quitting because other entries in /home/ubuntu/workspace/node_modules/.bin
+168 silly vacuum-fs quitting because other entries in /home/ubuntu/workspace/node_modules/.bin
+169 info install jsx@0.9.89
+170 info postinstall jsx@0.9.89
+171 verbose rebuild bundle /home/ubuntu/workspace/node_modules/react-dom
+172 info build /home/ubuntu/workspace/node_modules/react-dom
+173 info preinstall react-dom@0.14.7
+174 info linkStuff react-dom@0.14.7
+175 silly linkStuff react-dom@0.14.7 has /home/ubuntu/workspace/node_modules as its parent node_modules
+176 verbose linkBins react-dom@0.14.7
+177 verbose linkMans react-dom@0.14.7
+178 verbose rebuildBundles react-dom@0.14.7
+179 info install react-dom@0.14.7
+180 info postinstall react-dom@0.14.7
+181 verbose rebuild bundle /home/ubuntu/workspace/node_modules/socket.io
+182 info build /home/ubuntu/workspace/node_modules/socket.io
+183 info preinstall socket.io@0.9.17
+184 info linkStuff socket.io@0.9.17
+185 silly linkStuff socket.io@0.9.17 has /home/ubuntu/workspace/node_modules as its parent node_modules
+186 verbose linkBins socket.io@0.9.17
+187 verbose linkMans socket.io@0.9.17
+188 verbose rebuildBundles socket.io@0.9.17
+189 verbose rebuildBundles [ 'base64id', 'policyfile', 'redis', 'socket.io-client' ]
+190 info install socket.io@0.9.17
+191 info postinstall socket.io@0.9.17
+192 info install react-way-getting-started@1.0.0
+193 info postinstall react-way-getting-started@1.0.0
+194 verbose unsafe-perm in lifecycle true
+195 info prepublish react-way-getting-started@1.0.0
+196 verbose validateInstall loading /home/ubuntu/workspace/package.json for validation
+197 warn unmet dependency /home/ubuntu/workspace/node_modules/babel-register requires babel-core@'^6.5.1' but will load
+197 warn unmet dependency /home/ubuntu/workspace/node_modules/babel-core,
+197 warn unmet dependency which is version 5.8.35
+198 warn unmet dependency /home/ubuntu/workspace/node_modules/babel-preset-es2015/node_modules/babel-plugin-transform-regenerator requires babel-core@'^6.3.26' but will load
+198 warn unmet dependency /home/ubuntu/workspace/node_modules/babel-core,
+198 warn unmet dependency which is version 5.8.35
+199 verbose stack Error: The package react@0.13.3 does not satisfy its siblings' peerDependencies requirements!
+199 verbose stack     at /home/ubuntu/.nvm/versions/node/v4.1.1/lib/node_modules/npm/lib/install.js:125:32
+199 verbose stack     at /home/ubuntu/.nvm/versions/node/v4.1.1/lib/node_modules/npm/lib/install.js:268:7
+199 verbose stack     at /home/ubuntu/.nvm/versions/node/v4.1.1/lib/node_modules/npm/node_modules/read-installed/read-installed.js:142:5
+199 verbose stack     at /home/ubuntu/.nvm/versions/node/v4.1.1/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+199 verbose stack     at cb (/home/ubuntu/.nvm/versions/node/v4.1.1/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+199 verbose stack     at /home/ubuntu/.nvm/versions/node/v4.1.1/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+199 verbose stack     at cb (/home/ubuntu/.nvm/versions/node/v4.1.1/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+199 verbose stack     at /home/ubuntu/.nvm/versions/node/v4.1.1/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+199 verbose stack     at cb (/home/ubuntu/.nvm/versions/node/v4.1.1/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
+199 verbose stack     at /home/ubuntu/.nvm/versions/node/v4.1.1/lib/node_modules/npm/node_modules/read-installed/read-installed.js:263:14
+200 verbose cwd /home/ubuntu/workspace/src/app/components
+201 error Linux 4.2.0-c9
+202 error argv "/home/ubuntu/.nvm/versions/node/v4.1.1/bin/node" "/home/ubuntu/.nvm/versions/node/v4.1.1/bin/npm" "install"
+203 error node v4.1.1
+204 error npm  v2.14.4
+205 error code EPEERINVALID
+206 error peerinvalid The package react@0.13.3 does not satisfy its siblings' peerDependencies requirements!
+206 error peerinvalid Peer react-dom@0.14.7 wants react@^0.14.7
+207 verbose exit [ 1, true ]
