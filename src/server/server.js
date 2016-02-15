@@ -2,7 +2,6 @@ import path from 'path';
 import Express from 'express';
 import DB from "./dbHooks";
 var app = Express();
-var db = new DB({host:"209.222.26.2", user:"root", password:"jd9032nfa9932nozsc3oi234", database:"mineswineapi"});
 db.getMatches((data) => console.log(data));
 var server;
 
