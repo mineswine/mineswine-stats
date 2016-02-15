@@ -2,7 +2,8 @@ import path from 'path';
 import Express from 'express';
 import DB from "./dbHooks";
 var app = Express();
-db.getMatches((data) => console.log(data));
+// var db = new DB({host:"209.222.26.2", user:"root", password:"jd9032nfa9932nozsc3oi234", database:"mineswineapi"});
+// db.getMatches((data) => console.log(data));
 var server;
 
 // const PATH_STYLES = path.resolve(__dirname, '../client/styles');

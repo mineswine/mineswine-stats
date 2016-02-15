@@ -21862,7 +21862,6 @@
 	    }, {
 	        key: "render",
 	        value: function render() {
-	            console.log("rendered");
 	            return _react2.default.createElement(_griddleReact2.default, { useExternal: true, externalSetPage: this.setPage,
 	                externalChangeSort: this.changeSort, externalSetFilter: this.setFilter,
 	                externalSetPageSize: this.setPageSize, externalMaxPage: 20,
