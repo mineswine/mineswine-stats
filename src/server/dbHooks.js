@@ -16,8 +16,8 @@ class DB {
         });
     }
 
-    getWeaponInfo(uuid,callback){
-        this.connection.query("SELECT weapon,kills,fired,hit,timespent,headshots FROM `mcrl_weaponstats` WHERE uuid=?",[uuid],(err,rows) =>{
+    getWeaponInfo(uuid,callback,start,limit){
+        this.connection.query("SELECT weapon,kills,fired,hit,timespent,headshots FROM `mcrl_weaponstats` WHERE uuid=? LIMIT ?,?",[uuid,start,limit],(err,rows) =>{
               if (err)
                callback({uuid: uuid, error:err});
             else if (rows.length == 0)
@@ -27,9 +27,9 @@ class DB {
         });
     }
 
-    getMatchInfoForPlayer(uuid,callback,optionalOrderBy = "ended",optionalLimit = 9999999999,optionalStart = 0){
+    getMatchInfoForPlayer(uuid,callback,start,limit){
         this.connection.query("SELECT matchid,kills,meterswalked,rank,lossreason,ended FROM mcrl_matches_players WHERE uuid=? ORDER BY ? LIMIT ?,?",
-            [uuid,optionalOrderBy,optionalStart,optionalLimit], (err,rows) =>{
+            [uuid,'end',start,limit], (err,rows) =>{
             if (err)
                callback({uuid: uuid, error:err});
             else if (rows.length == 0)
@@ -50,8 +50,9 @@ class DB {
         });
     }
 
-    getMatches(callback,optionalOrderBy = "started",optionalLimit = 99999,optionalStart = 0){
-        this.connection.query("SELECT map,started,ended FROM `mcrl_matches` ORDER BY ? LIMIT ?,?", [optionalOrderBy, optionalStart, optionalLimit], (err,rows) => {
+    getMatches(callback,limit,start){
+        this.connection.query("SELECT map,started,ended FROM `mcrl_matches` ORDER BY ? LIMIT ?,?",
+         ['ended', start, limit], (err,rows) => {
             if (err)
                 callback({error: err});
             else
@@ -59,8 +60,9 @@ class DB {
         });
     }
 
-    getTopPlayers(callback,limit,optionalOrderBy = "elo",optionalStart = 0){
-        this.connection.query("SELECT kills,wins,deaths,elo FROM `mcrl_playerstats` ORDER BY ? LIMIT ?,?", [optionalOrderBy, optionalStart, limit], (rows,err) => {
+    getTopPlayers(callback,start,limit){
+        this.connection.query("SELECT kills,wins,deaths,elo FROM `mcrl_playerstats` ORDER BY ? LIMIT ?,?",
+        ['elo', start, limit], (rows,err) => {
              if (err)
                 callback({error: err});
             else
@@ -68,5 +70,4 @@ class DB {
         });
     }
 }
-
 export default DB;
