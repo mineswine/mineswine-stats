@@ -1,12 +1,10 @@
 import Griddle from "griddle-react";
-
+import React from "react";
 class MSTable extends React.Component {
   constructor(params) {
-    this.props = [
-      getmethod = params.getMethod;
-    ];
+    super(params);
+    this.props.getMethod = params.getMethod;
   }
-
     //what page is currently viewed
     setPage(index) {
         this.props.getMethod(index+1,(data) =>{
@@ -42,3 +40,5 @@ class MSTable extends React.Component {
         showFilter={true} showSettings={true} enableInfiniteScroll={true} bodyHeight={400} />;
     }
 }
+
+export default MSTable;
