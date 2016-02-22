@@ -3,16 +3,12 @@ import * as S from "string";
 import ProfileAvatar from "./profileavatar";
 import Stats from "./stats";
 class ProfileContainer extends React.Component{
-  constructor(params){
-    super(params);
-    this.props.uuid = params.uuid;
-    this.props.username = params.username;
-  }
   render(){
+    console.log(this.props);
     return <div className="profileContainer">
-        <ProfileAvatar uuid={this.props.uuid} username={this.props.username} className="large"/>
+        <ProfileAvatar user={this.props.user} username={this.props.username} large={true}/>
         <div className="largeStats">
-            <Stats uuid={this.props.uuid} />
+            <Stats user={this.props.user}/>
         </div>
     </div>
   }
