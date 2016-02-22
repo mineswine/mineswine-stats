@@ -11,7 +11,7 @@ class GriddleTest extends React.Component{
     //what page is currently viewed
     setPage(index) {
         var results = this.state.results;
-        
+
         for (let i = 0; i < 50; i++)
             results.push({country:"WEE", id:i});
         this.setState({results:results,currentpage:index+1});
@@ -35,14 +35,14 @@ class GriddleTest extends React.Component{
         return <Griddle useExternal={true} externalSetPage={this.setPage}
         externalChangeSort={this.changeSort} externalSetFilter={this.setFilter}
         externalSetPageSize={this.setPageSize} externalMaxPage={20}
-        externalCurrentPage={this.state.currentpage} results={this.state.results} 
-        resultsPerPage={50} 
-        externalSortColumn={this.state.externalSortColumn} 
+        externalCurrentPage={this.state.currentpage} results={this.state.results}
+        resultsPerPage={50}
+        externalSortColumn={this.state.externalSortColumn}
         externalSortAscending={this.state.externalSortAscending}
         showFilter={true} showSettings={true} enableInfiniteScroll={true} bodyHeight={400} />;
     }
-   
-    
+
+
 }
 
 export default GriddleTest;

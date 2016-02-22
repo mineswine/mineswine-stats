@@ -1,19 +1,22 @@
 import mysql from "mysql";
 class DB {
     constructor(mysqlinfo){
+      if (!mysqlinfo)
+        return;
         this.connection = mysql.createConnection(mysqlinfo);
         this.connection.connect();
     }
 
     getBasicInfo(uuid,callback){
-        this.connection.query("SELECT kills,wins,deaths,elo,stepswalked FROM `mcrl_playerstats` WHERE uuid=?",[uuid], (err,rows) => {
-            if (err)
-               callback({uuid: uuid, error:err});
-            else if (rows.length == 0)
-                callback({uuid: uuid, data:null});
-            else
-                callback({uuid: uuid, data:rows[0]});
-        });
+      callback({kills:10,losses:10,meterswalked:10,elo:30});
+        // this.connection.query("SELECT kills,wins,deaths,elo,stepswalked FROM `mcrl_playerstats` WHERE uuid=?",[uuid], (err,rows) => {
+        //     if (err)
+        //        callback({uuid: uuid, error:err});
+        //     else if (rows.length == 0)
+        //         callback({uuid: uuid, data:null});
+        //     else
+        //         callback({uuid: uuid, data:rows[0]});
+        // });
     }
 
     getWeaponInfo(uuid,callback,start,limit){

@@ -17,26 +17,10 @@ var server;
 var loadedprofiles = new Map()
 var app = express()
 console.log("DIRNAME "+__dirname);
-console.log(routes);
 app.use(compression())
-// app.use(express.static("/"))
+app.use(express.static(__dirname))
 app.use(express.static(path.join(__dirname, 'dist')))
-app.get('*', (req, res) => {
-  console.log(routes);
-  // match the routes to the url
-  match({ routes: routes, location: req.url }, (err, redirect, props) => {
-    // `RouterContext` is the what `Router` renders. `Router` keeps these
-    // `props` in its state as it listens to `browserHistory`. But on the
-    // server our app is stateless, so we need to use `match` to
-    // get these props before rendering.
-    const appHtml = renderToString(<RouterContext {...props}/>)
 
-    // dump the HTML into a template, lots of ways to do this, but none are
-    // really influenced by React Router, so we're just using a little
-    // function, `renderPage`
-    res.send(renderPage(appHtml))
-  })
-})
 
 function renderPage(appHtml) {
   return `
@@ -46,7 +30,8 @@ function renderPage(appHtml) {
     <title>My First React Router App</title>
     <link rel=stylesheet href=/index.css>
     <div id=app>${appHtml}</div>
-    <script src="/dist/bundle.js"></script>
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bundle.js"></script>
    `
 }
 
@@ -56,7 +41,7 @@ function renderPage(appHtml) {
 //   password: process.env.mineswineDBPass,
 //   database: process.env.mineswineDBName
 // });
-var db = null;
+var db = new DB(null);
 //
 // app.get('/', (req, res) => {
 //   res.sendFile(path.resolve(__dirname, '../client/index.html'));
@@ -76,11 +61,34 @@ app.get('/weaponstats/:uuid/:page', (req,res) => {
 
 app.get('/generalstats/:uuid', (req,res) => {
   db.getBasicInfo(req.params.uuid, data =>{
+    console.log(data);
     res.json(data);
   });
 });
 
-server = app.listen(process.env.PORT || 3001, () => {
+app.get('*', (req, res) => {
+
+  // console.log(routes);
+  // match the routes to the url
+  match({ routes: routes, location: req.url }, (err, redirect, props) => {
+    // `RouterContext` is the what `Router` renders. `Router` keeps these
+    // `props` in its state as it listens to `browserHistory`. But on the
+    // server our app is stateless, so we need to use `match` to
+    // get these props before rendering.
+    if (err) {
+      console.log(error);
+      return;
+    }
+    const appHtml = renderToString(<RouterContext {...props}/>)
+
+    // dump the HTML into a template, lots of ways to do this, but none are
+    // really influenced by React Router, so we're just using a little
+    // function, `renderPage`
+    res.send(renderPage(appHtml))
+  })
+})
+
+server = app.listen(process.env.PORT || 3004, () => {
   var port = server.address().port;
   console.log('Server is listening at %s', port);
 });

@@ -9,7 +9,7 @@
     "build:client": "webpack",
     "build:server": "webpack --config webpack.server.config.js",
     "build": "npm run build:client && npm run build:server"
-},
+  },
   "devDependencies": {
     "babel-core": "^6.0.0",
     "babel-loader": "^6.0.0",
@@ -24,8 +24,10 @@
     "cookie-parser": "^1.4.1",
     "dotenv": "^2.0.0",
     "express": "^4.12.3",
+    "jquery": "^2.2.0",
     "less-middleware": "^2.0.1",
     "react": "^0.14.7",
-    "string": "^3.3.1"
+    "string": "^3.3.1",
+    "xmlhttprequest": "^1.8.0"
   }
 }

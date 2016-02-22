@@ -3,7 +3,8 @@
   "description": "",
   "main": "src/server/index.js",
   "authors": [
-    "Jason Bratt <jasonhero858@gmail.com>"
+    "Jason Bratt <jasonhero858@gmail.com>",
+    "Dylan Gellis <dillyg10@gmail.com>"
   ],
   "license": "MIT",
   "homepage": "https://github.com/Insanehero/mineswine-stats",
@@ -14,5 +15,8 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "dependencies": {
+    "jquery": "^2.2.0"
+  }
 }

@@ -3,11 +3,16 @@ import React from "react";
 class MSTable extends React.Component {
   constructor(params) {
     super(params);
-    this.props.getMethod = params.getMethod;
+    this.getMethod = params.getMethod;
+    this.setPage = this.setPage.bind(this);
+    this.state = {
+      currentpage: 0,
+      data: []
+    }
   }
     //what page is currently viewed
     setPage(index) {
-        this.props.getMethod(index+1,(data) =>{
+        this.getMethod(index+1,data =>{
           this.setState(state => {
             state.data.push(data);
             state.currentpage = index+1;
@@ -27,13 +32,13 @@ class MSTable extends React.Component {
     setPageSize(size){
     }
     componentWillMount(){
-        this.setPage(0);
+        // this.setPage(0);
     }
     render(){
         return <Griddle useExternal={true} externalSetPage={this.setPage}
         externalChangeSort={this.changeSort} externalSetFilter={this.setFilter}
         externalSetPageSize={this.setPageSize} externalMaxPage={20}
-        externalCurrentPage={this.state.currentpage} results={this.state.results}
+        externalCurrentPage={this.state.currentpage} results={this.state.data}
         resultsPerPage={50}
         externalSortColumn={this.state.externalSortColumn}
         externalSortAscending={this.state.externalSortAscending}

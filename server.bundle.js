@@ -44,7 +44,7 @@
 /* 0 */
 /***/ function(module, exports, __webpack_require__) {
 
-	/* WEBPACK VAR INJECTION */(function(__dirname) {'use strict';
+	'use strict';
 
 	var _http = __webpack_require__(1);
 
@@ -82,29 +82,12 @@
 	var loadedprofiles = new Map();
 	var app = express();
 	console.log("DIRNAME " + __dirname);
-	console.log(_routes2.default);
 	app.use(compression());
-	// app.use(express.static("/"))
+	app.use(express.static(__dirname));
 	app.use(express.static(path.join(__dirname, 'dist')));
-	app.get('*', function (req, res) {
-	  console.log(_routes2.default);
-	  // match the routes to the url
-	  (0, _reactRouter.match)({ routes: _routes2.default, location: req.url }, function (err, redirect, props) {
-	    // `RouterContext` is the what `Router` renders. `Router` keeps these
-	    // `props` in its state as it listens to `browserHistory`. But on the
-	    // server our app is stateless, so we need to use `match` to
-	    // get these props before rendering.
-	    var appHtml = (0, _server.renderToString)(_react2.default.createElement(_reactRouter.RouterContext, props));
-
-	    // dump the HTML into a template, lots of ways to do this, but none are
-	    // really influenced by React Router, so we're just using a little
-	    // function, `renderPage`
-	    res.send(renderPage(appHtml));
-	  });
-	});
 
 	function renderPage(appHtml) {
-	  return '\n    <!doctype html public="storage">\n    <html>\n    <meta charset=utf-8/>\n    <title>My First React Router App</title>\n    <link rel=stylesheet href=/index.css>\n    <div id=app>' + appHtml + '</div>\n    <script src="/dist/bundle.js"></script>\n   ';
+	  return '\n    <!doctype html public="storage">\n    <html>\n    <meta charset=utf-8/>\n    <title>My First React Router App</title>\n    <link rel=stylesheet href=/index.css>\n    <div id=app>' + appHtml + '</div>\n    <script src="/bower_components/jquery/dist/jquery.min.js"></script>\n    <script src="/bundle.js"></script>\n   ';
 	}
 
 	// var db = new DB({
@@ -113,7 +96,7 @@
 	//   password: process.env.mineswineDBPass,
 	//   database: process.env.mineswineDBName
 	// });
-	var db = null;
+	var db = new _dbHooks2.default(null);
 	//
 	// app.get('/', (req, res) => {
 	//   res.sendFile(path.resolve(__dirname, '../client/index.html'));
@@ -133,15 +116,37 @@
 
 	app.get('/generalstats/:uuid', function (req, res) {
 	  db.getBasicInfo(req.params.uuid, function (data) {
+	    console.log(data);
 	    res.json(data);
 	  });
 	});
 
-	server = app.listen(process.env.PORT || 3001, function () {
+	app.get('*', function (req, res) {
+
+	  // console.log(routes);
+	  // match the routes to the url
+	  (0, _reactRouter.match)({ routes: _routes2.default, location: req.url }, function (err, redirect, props) {
+	    // `RouterContext` is the what `Router` renders. `Router` keeps these
+	    // `props` in its state as it listens to `browserHistory`. But on the
+	    // server our app is stateless, so we need to use `match` to
+	    // get these props before rendering.
+	    if (err) {
+	      console.log(error);
+	      return;
+	    }
+	    var appHtml = (0, _server.renderToString)(_react2.default.createElement(_reactRouter.RouterContext, props));
+
+	    // dump the HTML into a template, lots of ways to do this, but none are
+	    // really influenced by React Router, so we're just using a little
+	    // function, `renderPage`
+	    res.send(renderPage(appHtml));
+	  });
+	});
+
+	server = app.listen(process.env.PORT || 3004, function () {
 	  var port = server.address().port;
 	  console.log('Server is listening at %s', port);
 	});
-	/* WEBPACK VAR INJECTION */}.call(exports, ""))
 
 /***/ },
 /* 1 */
@@ -173,6 +178,7 @@
 	    function DB(mysqlinfo) {
 	        _classCallCheck(this, DB);
 
+	        if (!mysqlinfo) return;
 	        this.connection = _mysql2.default.createConnection(mysqlinfo);
 	        this.connection.connect();
 	    }
@@ -180,9 +186,15 @@
 	    _createClass(DB, [{
 	        key: "getBasicInfo",
 	        value: function getBasicInfo(uuid, callback) {
-	            this.connection.query("SELECT kills,wins,deaths,elo,stepswalked FROM `mcrl_playerstats` WHERE uuid=?", [uuid], function (err, rows) {
-	                if (err) callback({ uuid: uuid, error: err });else if (rows.length == 0) callback({ uuid: uuid, data: null });else callback({ uuid: uuid, data: rows[0] });
-	            });
+	            callback({ kills: 10, losses: 10, meterswalked: 10, elo: 30 });
+	            // this.connection.query("SELECT kills,wins,deaths,elo,stepswalked FROM `mcrl_playerstats` WHERE uuid=?",[uuid], (err,rows) => {
+	            //     if (err)
+	            //        callback({uuid: uuid, error:err});
+	            //     else if (rows.length == 0)
+	            //         callback({uuid: uuid, data:null});
+	            //     else
+	            //         callback({uuid: uuid, data:rows[0]});
+	            // });
 	        }
 	    }, {
 	        key: "getWeaponInfo",
@@ -21852,6 +21864,8 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	// var $ = require("jQuery");
+
 	var Profile = function (_React$Component) {
 	  _inherits(Profile, _React$Component);
 
@@ -21863,6 +21877,9 @@
 	    _this.state = {
 	      username: "--"
 	    };
+	    _this.recentmatches = _this.recentmatches.bind(_this);
+	    _this.weaponstats = _this.weaponstats.bind(_this);
+	    _this.standardcallback = _this.standardcallback.bind(_this);
 	    return _this;
 	  }
 
@@ -21893,8 +21910,12 @@
 	  }, {
 	    key: "standardcallback",
 	    value: function standardcallback(url, index, callback) {
+	      var ind = index + 1;
+	      if (typeof variable_here === 'undefined') {
+	        return;
+	      };
 	      $.ajax({
-	        url: "/" + url + "/" + this.props.params.uuid + "/" + (index + 1),
+	        url: "/" + url + "/" + this.props.params.uuid + "/" + ind,
 	        success: function success(result) {
 	          callback(JSON.parse(result));
 	        } });
@@ -21905,7 +21926,7 @@
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "profile" },
-	        _react2.default.createElement(_profileContainer2.default, { poop: this.props.params.uuid, username: this.state.username }),
+	        _react2.default.createElement(_profileContainer2.default, { user: this.props.params.uuid, username: this.state.username }),
 	        _react2.default.createElement(_mstable2.default, { className: "recentmatches", getMethod: this.recentmatches }),
 	        _react2.default.createElement(_mstable2.default, { className: "weaponstats", getMethod: this.weaponstats })
 	      );
@@ -21953,7 +21974,12 @@
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(MSTable).call(this, params));
 
-	    _this.props.getMethod = params.getMethod;
+	    _this.getMethod = params.getMethod;
+	    _this.setPage = _this.setPage.bind(_this);
+	    _this.state = {
+	      currentpage: 0,
+	      data: []
+	    };
 	    return _this;
 	  }
 	  //what page is currently viewed
@@ -21964,7 +21990,7 @@
 	    value: function setPage(index) {
 	      var _this2 = this;
 
-	      this.props.getMethod(index + 1, function (data) {
+	      this.getMethod(index + 1, function (data) {
 	        _this2.setState(function (state) {
 	          state.data.push(data);
 	          state.currentpage = index + 1;
@@ -21994,7 +22020,7 @@
 	  }, {
 	    key: "componentWillMount",
 	    value: function componentWillMount() {
-	      this.setPage(0);
+	      // this.setPage(0);
 	    }
 	  }, {
 	    key: "render",
@@ -22002,7 +22028,7 @@
 	      return _react2.default.createElement(_griddleReact2.default, { useExternal: true, externalSetPage: this.setPage,
 	        externalChangeSort: this.changeSort, externalSetFilter: this.setFilter,
 	        externalSetPageSize: this.setPageSize, externalMaxPage: 20,
-	        externalCurrentPage: this.state.currentpage, results: this.state.results,
+	        externalCurrentPage: this.state.currentpage, results: this.state.data,
 	        resultsPerPage: 50,
 	        externalSortColumn: this.state.externalSortColumn,
 	        externalSortAscending: this.state.externalSortAscending,
@@ -22062,27 +22088,24 @@
 	var ProfileContainer = function (_React$Component) {
 	  _inherits(ProfileContainer, _React$Component);
 
-	  function ProfileContainer(params) {
+	  function ProfileContainer() {
 	    _classCallCheck(this, ProfileContainer);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ProfileContainer).call(this, params));
-
-	    _this.props.uuid = params.uuid;
-	    _this.props.username = params.username;
-	    return _this;
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(ProfileContainer).apply(this, arguments));
 	  }
 
 	  _createClass(ProfileContainer, [{
 	    key: "render",
 	    value: function render() {
+	      console.log(this.props);
 	      return _react2.default.createElement(
 	        "div",
 	        { className: "profileContainer" },
-	        _react2.default.createElement(_profileavatar2.default, { uuid: this.props.uuid, username: this.props.username, className: "large" }),
+	        _react2.default.createElement(_profileavatar2.default, { user: this.props.user, username: this.props.username, large: true }),
 	        _react2.default.createElement(
 	          "div",
 	          { className: "largeStats" },
-	          _react2.default.createElement(_stats2.default, { uuid: this.props.uuid })
+	          _react2.default.createElement(_stats2.default, { user: this.props.user })
 	        )
 	      );
 	    }
@@ -22119,6 +22142,8 @@
 
 	var _stats2 = _interopRequireDefault(_stats);
 
+	var _reactRouter = __webpack_require__(6);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -22135,19 +22160,22 @@
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ProfileAvatar).call(this, props));
 
-	    _this.props.uuid = props.uuid;
-	    _this.props.username = props.username;
-	    _this.props.large = props.large;
+	    _this.user = props.user;
+	    _this.username = props.username;
+	    console.log(props);
+	    _this.large = props.large;
 	    _this.state = {
 	      renderside: false
 	    };
+	    _this.mouseEnter = _this.mouseEnter.bind(_this);
+	    _this.mouseLeave = _this.mouseLeave.bind(_this);
 	    return _this;
 	  }
 
 	  _createClass(ProfileAvatar, [{
 	    key: "mouseEnter",
 	    value: function mouseEnter(event) {
-	      if (!this.props.large) {
+	      if (!this.large) {
 	        this.setState(function (state) {
 	          return state.renderside = true;
 	        });
@@ -22156,7 +22184,7 @@
 	  }, {
 	    key: "mouseLeave",
 	    value: function mouseLeave(event) {
-	      if (!this.props.large) {
+	      if (!this.large) {
 	        this.setState(function (state) {
 	          return state.renderside = false;
 	        });
@@ -22166,18 +22194,18 @@
 	    key: "render",
 	    value: function render() {
 	      return _react2.default.createElement(
-	        Link,
-	        { to: "/stats/" + uuid, className: this.props.large ? "large" : "small", onMouseEnter: this.mouseEnter, onMouseLeave: this.mouseLeave },
-	        _react2.default.createElement("img", { src: "cravatar.eu/avatar/" + this.props.uuid + "/" + (this.props.large ? 100 : 50) }),
+	        _reactRouter.Link,
+	        { to: "/stats/" + this.user, className: this.large ? "large" : "small", onMouseEnter: this.mouseEnter, onMouseLeave: this.mouseLeave },
+	        _react2.default.createElement("img", { src: "http://cravatar.eu/avatar/" + this.user + "/" + (this.large ? 100 : 50) }),
 	        _react2.default.createElement(
 	          "span",
 	          { className: "name" },
-	          this.props.username
+	          this.username
 	        ),
 	        _react2.default.createElement(
 	          "div",
-	          { className: "smallstats", disabled: this.state.renderside },
-	          _react2.default.createElement(_stats2.default, { uuid: this.props.uuid })
+	          { className: "smallstats" },
+	          this.state.renderside ? _react2.default.createElement(_stats2.default, { user: this.user }) : null
 	        )
 	      );
 	    }
@@ -22212,6 +22240,12 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	var S = __webpack_require__(187);
+	// var $ = require("jquery");
+	// var XMLHttpRequest = require('xmlhttprequest').XMLHttpRequest;
+
+	// import S from "string";
+
 	var Stats = function (_React$Component) {
 	  _inherits(Stats, _React$Component);
 
@@ -22220,23 +22254,33 @@
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Stats).call(this, params));
 
-	    _this.props.uuid = params.uuid;
+	    console.log(params);
+	    _this.user = params.user;
 	    _this.state = {
-	      stats: {}
+	      stats: []
 	    };
+	    // $.support.cors = true;
+	    // $.ajaxSettings.xhr = () => {return new XMLHttpRequest();}
 	    return _this;
 	  }
 
 	  _createClass(Stats, [{
-	    key: "componentDIdMount",
-	    value: function componentDIdMount() {
+	    key: "componentDidMount",
+	    value: function componentDidMount() {
 	      var _this2 = this;
 
 	      $.ajax({
-	        url: "/generalstats/" + this.props.uuid,
-	        sucess: function sucess(result) {
-	          return _this2.setState(function (state) {
-	            return state.stats = JSON.parse(result);
+	        datatype: "json",
+	        url: "/generalstats/" + this.user,
+	        success: function success(result) {
+	          console.log(result);
+	          _this2.setState(function (state) {
+	            // let obj = JSON.parse(result);
+	            // console.log(obj);
+	            state.stats = Object.keys(result).map(function (k) {
+	              return { key: k, val: result[k] };
+	            });
+	            console.log(state.stats);
 	          });
 	        }
 	      });
@@ -22252,8 +22296,8 @@
 	          // return <ELO elo={stat.val}>
 	          else return _react2.default.createElement(
 	              "li",
-	              null,
-	              S(stat.val).s
+	              { key: stat.key },
+	              stat.key + ": " + stat.val
 	            );
 	        })
 	      );
